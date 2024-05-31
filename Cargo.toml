@@ -1,0 +1,12 @@
+[profile.release]
+opt-level = "z"
+
+[workspace]
+resolver = "2"
+members = [
+  "scenarios/remote_ping",
+  "zomes/*/coordinator",
+]
+
+[workspace.dependencies]
+hdk = "0.4.0-dev.5"
