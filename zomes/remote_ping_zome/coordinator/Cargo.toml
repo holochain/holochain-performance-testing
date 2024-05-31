@@ -1,0 +1,13 @@
+[package]
+name = "remote_ping_zome"
+version = "0.1.0"
+edition = "2021"
+description = "remote ping"
+
+[lib]
+name = "remote_ping_coordinator"
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+hdk = { workspace = true }

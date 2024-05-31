@@ -1,0 +1,13 @@
+[package]
+name = "remote_ping"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ed25519-dalek = { version = "2.1.1", features = [ "rand_core" ] }
+holochain_conductor_api = "0.4.0-dev.5"
+holochain_types = "0.4.0-dev.5"
+rand = "0.8.5"
+rmp-serde = "1.1"
+tokio = { version = "1.38.0", features = [ "full" ] }
+trycp_client = { path = "../../../tryorama/crates/trycp_client" }

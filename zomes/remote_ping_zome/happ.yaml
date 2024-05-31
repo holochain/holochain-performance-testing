@@ -1,0 +1,18 @@
+---
+manifest_version: "1"
+name: remote_ping_zome
+description: ~
+roles:
+  - name: remote_ping_zome
+    provisioning:
+      strategy: create
+      deferred: false
+    dna:
+      bundled: "remote_ping_zome.dna"
+      modifiers:
+        network_seed: ~
+        properties: ~
+        origin_time: ~
+        quantum_time: ~
+      version: ~
+      clone_limit: 0

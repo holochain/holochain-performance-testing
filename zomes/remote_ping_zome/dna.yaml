@@ -1,0 +1,14 @@
+---
+manifest_version: "1"
+name: remote_ping_zome
+integrity:
+  network_seed: ~
+  properties: ~
+  origin_time: 1671095008120433
+  zomes: []
+coordinator:
+  zomes:
+    - name: remote_ping_coordinator
+      hash: ~
+      bundled: "../../target/wasm32-unknown-unknown/release/remote_ping_coordinator.wasm"
+      dependencies: ~
