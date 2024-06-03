@@ -30,7 +30,7 @@
 
               packages = [
                 inputs.tryorama.packages.${system}.trycp-server
-                nodejs_20
+                pkgs.nodejs_20
                 pkgs.shellcheck
                 pkgs.statix
               ];
@@ -43,7 +43,7 @@
 
               packages = [
                 inputs.tryorama.packages.${system}.trycp-server
-                nodejs_20
+                pkgs.nodejs_20
                 pkgs.shellcheck
                 pkgs.statix
               ];
