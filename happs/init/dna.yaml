@@ -1,0 +1,13 @@
+manifest_version: "1"
+name: init
+integrity:
+  network_seed: ~
+  origin_time: "2022-09-30T00:00:00.000000Z"
+  properties: ~
+  zomes:
+    - name: integrity
+      bundled: "../../target/wasm32-unknown-unknown/release/init_integrity.wasm"
+coordinator:
+  zomes:
+    - name: coordinator
+      bundled: "../../target/wasm32-unknown-unknown/release/init_coordinator.wasm"

@@ -40,8 +40,27 @@ jobs:
       - name: Install dependencies
         run: nix develop .#ci --command npm ci
 
-      - name: Format
+      - name: Format (TypeScript)
         run: nix develop .#ci --command npm run format:check
 
-      - name: Lint
+      - name: Lint (TypeScript)
         run: nix develop .#ci --command npm run lint:check
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            .cargo/bin/
+            .cargo/registry/index/
+            .cargo/registry/cache/
+            .cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Format (Rust)
+        run: nix develop .#ci --command cargo fmt -- --check
+
+      - name: Lint (Rust)
+        run: nix develop .#ci --command cargo clippy --no-deps --all-targets -- -D warnings
+
+      - name: Build hApps
+        run: nix develop .#ci --command ./scripts/build-happs.sh

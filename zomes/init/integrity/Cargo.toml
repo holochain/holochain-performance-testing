@@ -1,0 +1,16 @@
+[package]
+name = "init_integrity"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "init_integrity"
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+hdi = { workspace = true }
+serde = { workspace = true }
+
+[lints]
+workspace = true

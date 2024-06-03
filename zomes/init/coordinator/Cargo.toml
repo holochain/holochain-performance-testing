@@ -1,0 +1,16 @@
+[package]
+name = "init"
+version = "0.1.0"
+edition = "2021"
+description = "A Holochain coordinator zome an init callback that accesses the network"
+
+[lib]
+name = "init_coordinator"
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+hdk = { workspace = true }
+
+[lints]
+workspace = true
