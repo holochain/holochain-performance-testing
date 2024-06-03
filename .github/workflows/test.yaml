@@ -63,4 +63,4 @@ jobs:
         run: nix develop .#ci --command cargo clippy --no-deps --all-targets -- -D warnings
 
       - name: Build hApps
-        run: nix develop .#ci --command ./scripts/build-happs.sh
+        run: nix develop .#ci --command ./scripts/build_happs.sh
