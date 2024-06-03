@@ -1,20 +1,20 @@
-import fs from 'fs';
-import path from 'path';
-import {TryCpClient} from "@holochain/tryorama";
+import fs from "fs";
+import path from "path";
+import { TryCpClient } from "@holochain/tryorama";
 
 /**
  * Load the targets.json file and return the nodes field.
  */
 export const loadTargets = (): string[] => {
-    const targetsFile = path.join(__dirname, '../targets.json');
-    const content = fs.readFileSync(targetsFile,  {encoding: 'utf8'});
+  const targetsFile = path.join(__dirname, "../targets.json");
+  const content = fs.readFileSync(targetsFile, { encoding: "utf8" });
 
-    const parsed = JSON.parse(content);
-    if (!parsed || !parsed.nodes) {
-        throw new Error('Invalid targets file');
-    }
+  const parsed = JSON.parse(content);
+  if (!parsed || !parsed.nodes) {
+    throw new Error("Invalid targets file");
+  }
 
-    return parsed.nodes;
+  return parsed.nodes;
 };
 
 /**
@@ -28,10 +28,15 @@ export const loadTargets = (): string[] => {
  * @param timeout The timeout in milliseconds for each connection attempt.
  * @returns An array of {(PromiseSettledResult<TryCpClient>)} for the connection attempts.
  */
-export const connectTargets = async (targets: string[], timeout: number = 5_000): Promise<PromiseSettledResult<TryCpClient>[]> => {
-    return await Promise.allSettled(targets.map(async (target) => {
-        return await TryCpClient.create(new URL(target), 5_000);
-    }));
+export const connectTargets = async (
+  targets: string[],
+  timeout: number = 5_000,
+): Promise<PromiseSettledResult<TryCpClient>[]> => {
+  return await Promise.allSettled(
+    targets.map(async (target) => {
+      return await TryCpClient.create(new URL(target), timeout);
+    }),
+  );
 };
 
 /**
@@ -40,14 +45,18 @@ export const connectTargets = async (targets: string[], timeout: number = 5_000)
  * @param attemptedConnections The result of calling {@link connectTargets} or otherwise.
  * @returns An array of {@link TryCpClient} instances for the TryCP servers we were able to connect to.
  */
-export const filterConnectedTargets = (attemptedConnections: PromiseSettledResult<TryCpClient>[]): TryCpClient[] => {
-    return attemptedConnections.map((result) => {
-        if (result.status === 'fulfilled') {
-            return result.value;
-        } else {
-            console.error(result.reason);
-        }
-    }).filter((client) => client);
+export const filterConnectedTargets = (
+  attemptedConnections: PromiseSettledResult<TryCpClient>[],
+): TryCpClient[] => {
+  return attemptedConnections
+    .map((result) => {
+      if (result.status === "fulfilled") {
+        return result.value;
+      } else {
+        console.error(result.reason);
+      }
+    })
+    .filter((client) => client);
 };
 
 /**
@@ -56,7 +65,7 @@ export const filterConnectedTargets = (attemptedConnections: PromiseSettledResul
  * @returns An array of {@link TryCpClient} instances for the TryCP servers we were able to connect to.
  */
 export const tryConnectAllTargets = async (): Promise<TryCpClient[]> => {
-    const targets = loadTargets();
-    const attemptedConnections = await connectTargets(targets);
-    return filterConnectedTargets(attemptedConnections);
+  const targets = loadTargets();
+  const attemptedConnections = await connectTargets(targets);
+  return filterConnectedTargets(attemptedConnections);
 };

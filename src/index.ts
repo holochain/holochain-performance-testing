@@ -1,1 +1,6 @@
-export { loadTargets, connectTargets, filterConnectedTargets, tryConnectAllTargets } from './targets';
+export {
+  loadTargets,
+  connectTargets,
+  filterConnectedTargets,
+  tryConnectAllTargets,
+} from "./targets";
