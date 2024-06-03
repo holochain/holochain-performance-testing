@@ -8,8 +8,9 @@ cargo build --release --target wasm32-unknown-unknown
 
 cd ./happs
 for happ in $(ls); do
-    pushd $happ
+    exit 1
+    cd $happ
     hc dna pack .
     hc app pack .
-    popd
+    cd ..
 done
