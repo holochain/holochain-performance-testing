@@ -39,10 +39,10 @@ jobs:
 
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: nix develop .#ci --command "npm ci"
+        run: nix develop .#ci --command npm ci
 
       - name: Format
-        run: nix develop .#ci --command "npm run format:check"
+        run: nix develop .#ci --command npm run format:check
 
       - name: Lint
-        run: nix develop .#ci --command "npm run lint:check"
+        run: nix develop .#ci --command npm run lint:check
