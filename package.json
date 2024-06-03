@@ -1,0 +1,27 @@
+{
+  "name": "holochain-performance-testing",
+  "version": "0.1.0",
+  "description": "Holochain performance tests",
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holochain/holochain-performance-testing.git"
+  },
+  "keywords": [
+    "holochain"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/holochain/holochain-performance-testing/issues"
+  },
+  "homepage": "https://github.com/holochain/holochain-performance-testing#readme",
+  "dependencies": {
+    "@holochain/client": "^0.17.0-rc.0",
+    "@holochain/tryorama": "^0.16.0-dev.7",
+    "vitest": "^1.6.0"
+  }
+}
