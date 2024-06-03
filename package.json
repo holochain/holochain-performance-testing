@@ -5,7 +5,11 @@
   "private": "true",
   "type": "module",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "format": "prettier --write *.ts **/*.ts",
+    "format:check": "prettier --check *.ts **/*.ts",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -23,5 +27,13 @@
     "@holochain/client": "^0.17.0-rc.0",
     "@holochain/tryorama": "^0.16.0-dev.7",
     "vitest": "^1.6.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.11.0"
   }
 }
