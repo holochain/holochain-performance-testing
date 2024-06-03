@@ -17,7 +17,8 @@ jobs:
       - uses: cachix/install-nix-action@v27
       - uses: cachix/cachix-action@v15
         with:
-          name: holochain-ci
+          name: holochain-performance-testing
+          extraPullNames: holochain-ci
 
       - name: Get NPM cache directory
         id: npm-cache-dir
